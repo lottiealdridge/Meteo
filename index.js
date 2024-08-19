@@ -6,7 +6,7 @@ function refreshWeather(response) {
     let humidityElement = document.querySelector("#humidity");
     let windSpeedElement = document.querySelector("#wind-speed");
     let timeElement = document.querySelector("#time");
-    let date = new Date(response.data*1000);
+    let date = new Date(response.data.time *1000);
 
     console.log(response.data.time);
 
@@ -31,6 +31,10 @@ function formatDate(date) {
         "Friday", 
         "Saturday"];
     let day = days[date.getDay()];
+
+    if (minutes< 10) {
+        minutes = `0${minutes}`;
+    }
 
     return `${day} ${hours}:${minutes}`;
 
